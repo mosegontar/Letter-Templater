@@ -1,5 +1,3 @@
-#!/home/math1/agontar/Desktop/personal/LetTemp/venv/bin/python
-import argparse
 import os
 import re
 

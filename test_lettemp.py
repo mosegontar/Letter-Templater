@@ -14,7 +14,6 @@ class TestLetTemp(unittest.TestCase):
         os.remove(self.f.name)
 
     def write_contents(self, content):
-
         self.f.write(content)
         self.f.close()
 
