@@ -27,7 +27,7 @@ class LetterTemplate(object):
         with open(self.template_name, 'r') as f:
             self.content = f.read()
 
-        self.placeholders = re.findall(r'\{\{ \w+ \}\}', self.content)
+        self.placeholders = list(set(re.findall(r'\{\{ \w+ \}\}', self.content)))
 
     def replace_placeholders(self, **kwargs):
 
