@@ -48,24 +48,38 @@ class LetterTemplate(object):
         if not os.path.exists(self.new_directory):
             os.makedirs(self.new_directory)
 
-    def save_new_letter(self, filename=None, new_directory=True):
+    def save_new_letter(self, filepath):
+
+        with open(filepath, 'w') as new_letter_file:
+            new_letter_file.write(self.new_letter)
+            new_letter_file.close()
+
+    def prepare_new_letter(self, filename=None, new_directory=True):
 
         if not filename:
             filename = raw_input('Save as? ')
 
-        full_path = os.getcwd()+'/'+filename
+        filepath = os.getcwd()+'/'+filename
+
         if new_directory:
             new_directory_name = raw_input('Directory name: ')
             self.make_new_directory(new_directory_name)
-            full_path = os.getcwd()+'/'+new_directory_name+'/'+filename
+            filepath = os.getcwd()+'/'+new_directory_name+'/'+filename
 
-        with open(full_path, 'w') as new_letter_file:
-            new_letter_file.write(self.new_letter)
-            new_letter_file.close()
+        self.save_new_letter(filepath)
+
+
+class UserInterface(object):
+
+    def __init__(self):
+        self.template = LetterTemplate()
+        self.get_template_text()
+
+      
 
 if __name__ == '__main__':
 
     letter = LetterTemplate()
     letter.get_template_text()
     letter.replace_placeholders()
-    letter.save_new_letter()
+    letter.prepare_new_letter()

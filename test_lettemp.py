@@ -55,7 +55,7 @@ class TestLetTemp(unittest.TestCase):
         template = self.get_template_object()
         
         template.replace_placeholders(NAME='Alex', INSTITUTION='Hogwarts')
-        template.save_new_letter('new_file_test.txt', new_directory=False)
+        template.prepare_new_letter('new_file_test.txt', new_directory=False)
 
         _newf_contents = ''
         with open('new_file_test.txt', 'r') as newf:
@@ -72,7 +72,7 @@ class TestLetTemp(unittest.TestCase):
         template = self.get_template_object()
         
         template.replace_placeholders(NAME='Alex', INSTITUTION='Hogwarts')
-        template.save_new_letter('new_file_test.txt')
+        template.prepare_new_letter('new_file_test.txt')
 
         dir_contents = os.listdir(self.cwd)
         shutil.rmtree(self.cwd+'/'+'Hogwarts')
@@ -85,7 +85,7 @@ class TestLetTemp(unittest.TestCase):
         template = self.get_template_object()
         
         template.replace_placeholders(NAME='Alex', INSTITUTION='Hogwarts')
-        template.save_new_letter('new_file_test.txt')
+        template.prepare_new_letter('new_file_test.txt')
 
         new_path = self.cwd+'/'+'Hogwarts'
         dir_contents = os.listdir(new_path)
