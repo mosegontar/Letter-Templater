@@ -6,7 +6,7 @@
 
 Template files begin with "lettemp_". If a directory has more than one template file, you will be prompted to select one from a list.
 
-Templates (inspired by Jinja2) look like this:
+Templates look like this:
 > `lettemp_wizard_school_acceptance.txt`
 > 
 > Dear {{ NAME }},
